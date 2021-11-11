@@ -1,1 +1,21 @@
 /* CSS coding here */
+h1 {
+  text-align: center;
+  text-decoration: underline;
+}
+
+h2 {
+  text-decoration: underline;
+}
+
+.pokeinfo {
+  clear: both;
+  display: flex;
+  text-align: center;
+}
+
+.pokeinfo__item {
+  flex-direction: column;
+  margin: 20px;
+  max-width: 400px;
+}
