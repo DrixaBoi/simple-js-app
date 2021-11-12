@@ -52,7 +52,7 @@ for (let i = 0; i < pokemonList.length; i++){
   document.write('<h3>Evolutions: ' + pokemonList[i].evolutions + '</h3>');
   // Part 3, add code to highlight special pokemon attributes.
   if (pokemonList[i].height >= 1.5) {
-    document.write('<h3>  Pokedex: "Whoa! that\'s one big ' + pokemonList[i].name + '"</h3>');
+    document.write('<h3>  Pokedex: "Whoa! that\'s one big ' + pokemonList[i].name + '"</h3></div>');
   // Part 3 extra, added a else for practice
   }else {
     document.write('<h3>  Pokedex: "This is an average size ' + pokemonList[i].name + '"</h3></div>')
