@@ -8,11 +8,6 @@ h2 {
   text-decoration: underline;
 }
 
-.pokeinfo {
-  display: flex;
+.pokemon {
   text-align: center;
-  justify-content: space-between;
-}
-
-.pokeinfo__item {
 }
