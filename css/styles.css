@@ -1,13 +1,13 @@
 /* CSS coding here */
-h1 {
-  text-align: center;
-  text-decoration: underline;
+
+.button-class {
+  border-color: #EC0404;
+  border-radius: 15%;
+  transition-duration: 0.5s;
+  margin: 4px;
 }
 
-h2 {
-  text-decoration: underline;
-}
-
-.pokemon {
-  text-align: center;
+.button-class:hover, .button-class:focus {
+  cursor: pointer;
+  opacity: 20%;
 }
