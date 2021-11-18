@@ -43,42 +43,64 @@ let pokemonRepository = (function() {
       evolutions: ['Kadabra', 'Alakazam']
     }
   ];
-// add function
-    function add(pokemon) {
-      if (typeof pokemon === 'object') {
+
+  // add function
+  function add(pokemon) {
+    if (typeof pokemon === 'object') {
         pokemonList.push(pokemon);
-    }else{
-      alert('Not a valid entry')
+      }else{
+        alert('Not a valid entry')
       }
-    }
-// getAll function
-    function getAll() {
-      return pokemonList;
-    }
-
-      return {
-        getAll: getAll,
-        add: add,
-      };
-  })();
-
-//Update loop code to cope with new changes
-function pokemonStats(pokemon) {
-  document.write('<div class="pokemon">' + pokemon.name + ' <br>height: ' + pokemon.height + ' <br>weight: ' + pokemon.weight + ' <br>type: ' + pokemon.type + ' <br>weakness: ' + pokemon.weakness + ' <br>evolutions: ' + pokemon.evolutions + '<br></div><br>');
-// Part 3, add code to highlight special pokemon attributes
-  if (pokemon.height >= 1.5) {
-    document.write('<div class="pokemon"> - Wow! That\'s big! </div><br>');
   }
-}
+  function getAll() {
+    return pokemonList;
+  }
+
+// addListItem function assigning button list to HTML
+  function addListItem(pokemon){
+    let pokeList = document.querySelector(".pokemon-list");
+    let listPokemon = document.createElement("li");
+    let button = document.createElement("button");
+//puts each pokemon name in a button
+    button.innerText = pokemon.name;
+//adds a class to button
+    button.classList.add("button-class");
+//appending children to parent
+    listPokemon.appendChild(button);
+    pokeList.appendChild(listPokemon);
+
+    button.addEventListener('click', function (){
+      showDetails(pokemon);
+  });
+  }
+
+  function showDetails(pokemon) {
+   console.log(pokemon.name);
+   console.log(pokemon.weight);
+   console.log(pokemon.height);
+   console.log(pokemon.type);
+   console.log(pokemon.weakness);
+   console.log(pokemon.evolutions);
+  }
+
+  return {
+    getAll: getAll,
+    add: add,
+    addListItem: addListItem,
+  };
+})();
 
 //Adding new pokemon entry
 pokemonRepository.add({name: 'Shelder', height: '0.6', weight: '2.3', type: ['water'], weakness: ['grass', 'electric'], evolutions: ['Cloyster']});
-
 //forEach function to show pokemonRepository contents
-pokemonRepository.getAll().forEach(pokemonStats);
+pokemonRepository.getAll().forEach(function (pokemon) {
+  pokemonRepository.addListItem(pokemon);
+});
 
 
-//document.write('<div class="pokeinfo">');
+//Old reference notes below
+
+//document.write('<div ="pokeinfo">');
   // Part 1, Create a for loop that iterates over each pokemon item in the list
 //for (let i = 0; i < pokemonList.length; i++){
 //  document.write('<div class="pokeinfo__item"><h2>' + pokemonList[i].name + '</h2>');
