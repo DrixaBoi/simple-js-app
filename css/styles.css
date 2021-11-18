@@ -1,10 +1,17 @@
 /* CSS coding here */
 
+h1 {
+  text-decoration: underline;
+}
+
 .button-class {
   border-color: #EC0404;
   border-radius: 15%;
   transition-duration: 0.5s;
   margin: 4px;
+  text-align: center;
+
+
 }
 
 .button-class:hover, .button-class:focus {
