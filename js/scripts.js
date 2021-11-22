@@ -1,48 +1,8 @@
 // IIFE wrap pokemonList
 let pokemonRepository = (function() {
 // Pokemon information list
-  let pokemonList = [
-    {
-      name: 'Sandshrew',
-      height: 0.8,
-      weight: 12,
-      type: ['ground'],
-      weakness: ['water', 'grass', 'ice'],
-      evolutions: ['Sandslash']
-    },
-    {
-      name: 'Vulpix',
-      height: 0.6,
-      weight: 9.9,
-      type: ['fire'],
-      weakness: ['water', 'ground', 'rock'],
-      evolutions: ['Ninetails']
-    },
-    {
-      name: 'Oddish',
-      height: 0.7,
-      weight: 5.4,
-      type: ['grass', 'poison'],
-      weakness: ['ground', 'psychic', 'flying', 'fire', 'ice'],
-      evolutions: ['Gloom', 'Vileplume']
-    },
-    {
-      name: 'Mankey',
-      height: 1.4,
-      weight: 28,
-      type: ['fighting'],
-      weakness: ['flying', 'psychic', 'fairy'],
-      evolutions: ['Primeape']
-    },
-    {
-      name: 'Abra',
-      height: 1.5,
-      weight: 19.5,
-      type: ['psychic'],
-      weakness: ['bug', 'ghost', 'dragon'],
-      evolutions: ['Kadabra', 'Alakazam']
-    }
-  ];
+  let pokemonList = [];
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
   // add function
   function add(pokemon) {
@@ -71,32 +31,63 @@ let pokemonRepository = (function() {
 
     button.addEventListener('click', function (){
       showDetails(pokemon);
-  });
+    });
+  }
+
+  function loadList() {
+    return fetch(apiUrl).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      json.results.forEach(function (item) {
+        let pokemon = {
+          name: item.name,
+          detailsUrl: item.url
+        };
+        add(pokemon);
+      });
+    }).catch(function (e) {
+      console.error(e);
+    })
+  }
+
+  function loadDetails(item) {
+    let url = item.detailsUrl;
+    return fetch(url).then(function (response) {
+      return response.json();
+    }).then(function (details) {
+      // Now we add the details to the item
+      item.imageUrl = details.sprites.front_default;
+      item.height = details.height;
+      item.types = details.types;
+    }).catch(function (e) {
+      console.error(e);
+    });
   }
 
   function showDetails(pokemon) {
-   console.log(pokemon.name);
-   console.log(pokemon.weight);
-   console.log(pokemon.height);
-   console.log(pokemon.type);
-   console.log(pokemon.weakness);
-   console.log(pokemon.evolutions);
+    loadDetails(pokemon).then(function () {
+      console.log(pokemon);
+    });
   }
 
   return {
     getAll: getAll,
     add: add,
     addListItem: addListItem,
+    loadDetails: loadDetails,
+    loadList: loadList
   };
 })();
 
 //Adding new pokemon entry
-pokemonRepository.add({name: 'Shelder', height: '0.6', weight: '2.3', type: ['water'], weakness: ['grass', 'electric'], evolutions: ['Cloyster']});
-//forEach function to show pokemonRepository contents
-pokemonRepository.getAll().forEach(function (pokemon) {
-  pokemonRepository.addListItem(pokemon);
-});
+//pokemonRepository.add({name: 'Shelder', height: '0.6', weight: '2.3', type: ['water'], weakness: ['grass', 'electric'], evolutions: ['Cloyster']});
 
+//forEach function to show pokemonRepository contents
+pokemonRepository.loadList().then(function() {
+  pokemonRepository.getAll().forEach(function (pokemon){
+    pokemonRepository.addListItem(pokemon);
+  });
+});
 
 //Old reference notes below
 
