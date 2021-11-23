@@ -34,6 +34,7 @@ let pokemonRepository = (function() {
     });
   }
 
+//fetching pokemon data from https://pokeapi.co/api/v2/pokemon/
   function loadList() {
     return fetch(apiUrl).then(function (response) {
       return response.json();
@@ -50,12 +51,12 @@ let pokemonRepository = (function() {
     })
   }
 
+//taking specific details from each pokemon
   function loadDetails(item) {
     let url = item.detailsUrl;
     return fetch(url).then(function (response) {
       return response.json();
     }).then(function (details) {
-      // Now we add the details to the item
       item.imageUrl = details.sprites.front_default;
       item.height = details.height;
       item.types = details.types;
@@ -64,6 +65,7 @@ let pokemonRepository = (function() {
     });
   }
 
+//console logging pokemon info fetched on button click
   function showDetails(pokemon) {
     loadDetails(pokemon).then(function () {
       console.log(pokemon);
