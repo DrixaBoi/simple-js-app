@@ -12,9 +12,18 @@ h1 {
   display: grid;
 }
 
+.pokemon-list {
+  max-width: fit-content;
+  margin: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
 .button-class {
-  margin: 0 auto;
+  margin: 20px;
   width: 15%;
+  min-width: 100px;
   height: auto;
   padding: 15px;
   margin-bottom: 10px;
