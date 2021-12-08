@@ -7,19 +7,31 @@ header {
   margin-top: 140px;
 }
 
-button {
-  border-radius: 10% 25%;
-  font-weight: bold;
-  text-transform: capitalize;
-  width: 120%;
-  height: 110%;
-  background-color: #FFDE00;
-  border-color: #B3A125;
-  border-width: 3px;
+.navbar {
+  background-image: linear-gradient(
+    to left,
+    hsl(344, 100%, 50%),
+    hsl(31, 100%, 40%)
+    );
 }
 
-.navbar {
-  background-color: #CC0000;
+#poketitle {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 270px;
+  height: auto;
+}
+
+#myInput {
+  border-color: black;
+}
+
+#navSearchBtn {
+  background-color: #FFDE00;
+  color: black;
+  border-color: black;
+  font-weight: bold;
 }
 
 .pokemon-list {
@@ -29,6 +41,17 @@ button {
   flex-wrap: wrap;
   list-style: none;
   justify-content: center;
+}
+
+.pokemon-button {
+  border-radius: 10% 25%;
+  font-weight: bold;
+  text-transform: capitalize;
+  width: 120%;
+  height: 110%;
+  background-color: #FFDE00;
+  border-color: #B3A125;
+  border-width: 3px;
 }
 
 .pokemon {
@@ -43,4 +66,31 @@ button {
 
 .modal-content {
   text-align: center;
+  text-transform: capitalize;
+  font-weight: bold;
+  background-image: linear-gradient(
+    to bottom,
+    hsl(211, 100%, 50%),
+    hsl(179, 100%, 30%)
+    );
+}
+
+#closeButton {
+  background-color: #CC0000;
+  border-width: 2px;
+  border-color: black;
+}
+
+
+.credit {
+  display: flex;
+  justify-content: center;
+  color: black;
+  text-decoration: underline;
+}
+
+.credit:hover, .credit:focus {
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
 }
