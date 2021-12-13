@@ -1,3 +1,4 @@
+/* eslint-env jquery */
 // IIFE wrap pokemonList
 let pokemonRepository = (function() {
 // Pokemon information list
@@ -19,15 +20,15 @@ let pokemonRepository = (function() {
 
 // addListItem function assigning button list to HTML
   function addListItem(pokemon){
-    let pokeList = document.querySelector(".pokemon-list");
-    let listPokemon = document.createElement("li");
-    let container = document.createElement("div");
-    let button = document.createElement("button");
+    let pokeList = document.querySelector('.pokemon-list');
+    let listPokemon = document.createElement('li');
+    let container = document.createElement('div');
+    let button = document.createElement('button');
 //puts each pokemon name in a button
     button.innerText = pokemon.name;
 //adds a class to button and button container
     container.classList.add('pokemon');
-    button.classList.add("pokemon-button");
+    button.classList.add('pokemon-button');
 //appending children to parent
     container.appendChild(button);
     listPokemon.appendChild(container);
